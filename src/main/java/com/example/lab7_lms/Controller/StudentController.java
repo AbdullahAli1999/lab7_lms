@@ -89,10 +89,17 @@ public class StudentController {
         return ResponseEntity.status(200).body(students);
     }
 
-//    public ResponseEntity isGraduate(@PathVariable int totalHour) {
-//
-//
-//    }
+    @PutMapping("/graduate/{totalHour}")
+    public ResponseEntity isGraduate(@PathVariable int totalHour) {
+        //ArrayList<Student> students = studentService.getStudents();
+      boolean graduate = studentService.graduate(totalHour);
+        if (!graduate) {
+            return ResponseEntity.status(400).body(new ApiResponse("Student not found"));
+        }
+
+        return ResponseEntity.status(200).body("students updated");
+
+    }
 
 
 

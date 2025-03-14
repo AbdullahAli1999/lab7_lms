@@ -80,13 +80,15 @@ public class StudentService {
     }
 
     public boolean graduate(int totalHour) {
+        boolean graduate = false;
         for (int i = 0; i < students.size(); i++) {
-            if(students.get(i).totalHour > 120){
+            if(students.get(i).getTotalHour() >= totalHour){
                 students.get(i).setGraduate(true);
-                return true;
+                 graduate = true;
+
             }
         }
-        return false;
+        return graduate;
     }
 
 
